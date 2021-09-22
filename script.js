@@ -8,8 +8,8 @@ function setup() {
 
 function draw() {
   noStroke();
-  fill('red');
-  ellipse(30, 220, 30);
+  fill(255, 230, 0);
+  ellipse(400, 220, 30);
   stroke('green');
   fill('white');
   strokeWeight(10);
