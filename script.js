@@ -2,7 +2,7 @@ var bird
 
 function setup() {
   canvas = createCanvas(800, 500);
-  background(0, 187, 255);
+  
   frameRate(10);
   bird = new Bird();
 }
@@ -13,6 +13,7 @@ function preload() {
 }
 
 function draw() {
+  background(0, 187, 255);
   //noStroke();
   fill(255, 230, 0);
   //ellipse(400, 220, 30);
