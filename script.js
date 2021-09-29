@@ -1,7 +1,7 @@
 var bird
 
 function setup() {
-  canvas = createCanvas(800, 500);
+  canvas = createCanvas(400, 400);
   
   frameRate(10);
   bird = new Bird();
@@ -12,38 +12,25 @@ function preload() {
   img = loadImage("images/transparent.png");
 }
 
-function draw() {
-  background(0, 187, 255);
-  //noStroke();
-  fill(255, 230, 0);
-  //ellipse(400, 220, 30);
-  //stroke('green');
-  //fill('white');
-  //strokeWeight(10);
-  bird.update();
-  bird.show();
-  //
-}
-
 class Bird {
   constructor() {
     this.y = height / 2;
     this.x = 64;
     this.gravity = 0.6;
-    this.lift = -16;
+    this.lift = -5;
     this.velocity = 0;
   }
 
-  show () {    
+  show() {    
     image(img, this.x,this.y, 100, 100);    
   }
 
-  goUp () {
+  goUp() {
     this.velocity += this.lift;
     console.log(this.velocity);
   }
 
-  update () {
+  update() {
     this.velocity += this.gravity;
     this.velocity *= 0.9;
     this.y += this.velocity;
@@ -57,6 +44,26 @@ class Bird {
       this.y = 0;
       this.velocity = 0;
     }
+   function keyPressed() {
+  if (key == " ") {
+    bird.goUp;
+    }
 
   }
 }
+}
+function draw() {
+  background(0, 187, 255);
+  //noStroke();
+  fill(255, 230, 0);
+  //ellipse(400, 220, 30);
+  //stroke('green');
+  //fill('white');
+  //strokeWeight(10);
+  bird.update();
+  bird.show();
+  //
+ } 
+
+
+
