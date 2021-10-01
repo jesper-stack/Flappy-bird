@@ -1,18 +1,6 @@
-var bird 
+var bird
 let bg;
 let y = 0;
-function setup() {
-  canvas = createCanvas(600, 480);
-  bg = loadImage("images/images.png");
-  bird = new Bird();
-}
-
-let img;
-function preload() {
-  img = loadImage("images/transparent.png");
-  
-}
-
 
 class Bird {
   constructor() {
@@ -23,8 +11,8 @@ class Bird {
     this.velocity = 0;
   }
 
-  show() {    
-    image(img, this.x,this.y, 100, 100);    
+  show() {
+    image(img, this.x, this.y, 100, 100);
   }
 
   goUp() {
@@ -37,20 +25,51 @@ class Bird {
     this.velocity *= 0.9;
     this.y += this.velocity;
 
-     if (this.y > height) {
+    if (this.y > height) {
       this.y = height;
       this.velocity = 0;
     }
 
-     if (this.y < 0) {
+    if (this.y < 0) {
       this.y = 0;
       this.velocity = 0;
     }
-   
-  
+
+
 
   }
 }
+
+class Pipe {
+  constructor(y, h) {
+    this.x = width + 50;
+    this.y = y;
+    this.w = 30;
+    this.h = h;
+  }
+
+  draw() {
+    rect(this.x, this.y, this.w, this.h);
+    this.x -= 5;
+  }
+}
+
+
+let img;
+function preload() {
+  img = loadImage("images/transparent.png");
+
+}
+
+pipes = [];
+
+function setup() {
+  canvas = createCanvas(600, 480);
+  bg = loadImage("images/images.png");
+  bird = new Bird();
+}
+
+
 
 function draw() {
   background(bg)
@@ -62,14 +81,33 @@ function draw() {
   //strokeWeight(10);
   bird.update();
   bird.show();
+
+  if (frameCount % 100 == 0) {
+
+    let randomHeight = random(height - 120)
+
+    pipes.push(new Pipe(0, randomHeight));
+    pipes.push(new Pipe(randomHeight + 100, 400));
+
+    if(pipes.length > 8){
+      pipes.splice(0,2);
+    }
+
+    console.log(pipes);
+  }
+
+  pipes.forEach((p) => {
+    p.draw();
+  })
   //
- 
 
-} 
 
-function keyPressed(){
+
+}
+
+function keyPressed() {
   if (key === " ") {
-    bird.goUp() 
+    bird.goUp();
   }
 }
- 
+
