@@ -3,13 +3,13 @@ var bird
 function setup() {
   canvas = createCanvas(400, 400);
   
-  frameRate(10);
   bird = new Bird();
 }
 
 let img;
 function preload() {
   img = loadImage("images/transparent.png");
+  
 }
 
 class Bird {
