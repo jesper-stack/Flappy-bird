@@ -1,8 +1,9 @@
 var bird 
-
+let bg;
+let y = 0;
 function setup() {
-  canvas = createCanvas(500, 500);
-  
+  canvas = createCanvas(600, 480);
+  bg = loadImage("images/images.png");
   bird = new Bird();
 }
 
@@ -52,7 +53,7 @@ class Bird {
 }
 
 function draw() {
-  background(0, 187, 255);
+  background(bg)
   //noStroke();
   fill(255, 230, 0);
   //ellipse(400, 220, 30);
