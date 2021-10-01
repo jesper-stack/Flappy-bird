@@ -1,7 +1,7 @@
-var bird
+var bird 
 
 function setup() {
-  canvas = createCanvas(400, 400);
+  canvas = createCanvas(500, 500);
   
   bird = new Bird();
 }
@@ -12,12 +12,13 @@ function preload() {
   
 }
 
+
 class Bird {
   constructor() {
     this.y = height / 2;
     this.x = 64;
     this.gravity = 0.6;
-    this.lift = -5;
+    this.lift = -15;
     this.velocity = 0;
   }
 
@@ -44,14 +45,12 @@ class Bird {
       this.y = 0;
       this.velocity = 0;
     }
-   function keyPressed() {
-  if (key == " ") {
-    bird.goUp;
-    }
+   
+  
 
   }
 }
-}
+
 function draw() {
   background(0, 187, 255);
   //noStroke();
@@ -63,7 +62,13 @@ function draw() {
   bird.update();
   bird.show();
   //
- } 
+ 
 
+} 
 
-
+function keyPressed(){
+  if (key === " ") {
+    bird.goUp() 
+  }
+}
+ 
