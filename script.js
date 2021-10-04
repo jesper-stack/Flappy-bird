@@ -101,7 +101,10 @@ function draw() {
   })
   //
 
-
+  if(this.x < 100 + 80 && this.x + 50 > 100){
+    if(this.y < 100 + 30 && this.y + 50 > 100){
+    }
+  }
 
 }
 
