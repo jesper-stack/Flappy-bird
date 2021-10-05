@@ -1,4 +1,5 @@
 var bird
+let number = '0';
 let bg;
 let y = 0;
 
@@ -73,17 +74,21 @@ function setup() {
 
 function draw() {
   background(bg)
+  textSize(50);
+  text(number, 300, 70, 70, 70);
   //noStroke();
-  fill(255, 230, 0);
+  fill(0, 0, 0);
   //ellipse(400, 220, 30);
   //stroke('green');
   //fill('white');
   //strokeWeight(10);
   bird.update();
   bird.show();
-
+  if (frameCount % 100 == 0 && frameCount >= 200) {
+    number++;
+  }
   if (frameCount % 100 == 0) {
-
+    
     let randomHeight = random(height - 120)
 
     pipes.push(new Pipe(0, randomHeight));
