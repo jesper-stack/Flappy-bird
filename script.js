@@ -45,7 +45,7 @@ class Pipe {
   constructor(y, h) {
     this.x = width + 50;
     this.y = y;
-    this.w = 100;
+    this.w = 200;
     this.h = h;
   }
 
