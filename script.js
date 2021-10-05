@@ -45,21 +45,25 @@ class Pipe {
   constructor(y, h) {
     this.x = width + 50;
     this.y = y;
-    this.w = 30;
+    this.w = 100;
     this.h = h;
   }
 
+
   draw() {
-    rect(this.x, this.y, this.w, this.h);
+    image(img2, this.x, this.y, this.w, this.h);
     this.x -= 5;
   }
 }
 
 
+
+
+let img2;
 let img;
 function preload() {
   img = loadImage("images/transparent.png");
-
+  img2 = loadImage("images/pijp.png");
 }
 
 pipes = [];
