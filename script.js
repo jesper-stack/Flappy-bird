@@ -1,5 +1,5 @@
 var bird
-let number = '0';
+let number = 0;
 let bg;
 let y = 0;
 
@@ -88,7 +88,7 @@ function draw() {
   //strokeWeight(10);
   bird.update();
   bird.show();
-  if (frameCount % 100 == 0 && frameCount >= 200) {
+  if (frameCount % 100 == 30 && frameCount >= 200) {
     number++;
   }
   if (frameCount % 100 == 0) {
