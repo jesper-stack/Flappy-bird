@@ -80,15 +80,10 @@ function draw() {
   background(bg)
   textSize(50);
   text(number, 300, 70, 70, 70);
-  //noStroke();
-  fill(0, 0, 0);
-  //ellipse(400, 220, 30);
-  //stroke('green');
-  //fill('white');
-  //strokeWeight(10);
+  fill(115, 230, 0);
   bird.update();
   bird.show();
-  if (frameCount % 100 == 30 && frameCount >= 200) {
+  if (frameCount % 100 == 7 && frameCount >= 200) {
     number++;
   }
   if (frameCount % 100 == 0) {
