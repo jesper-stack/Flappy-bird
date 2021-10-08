@@ -43,15 +43,15 @@ class Bird {
 
 class Pipe {
   constructor(y, h) {
-    this.x = width + 50;
+    this.x = width + 10;
     this.y = y;
-    this.w = 200;
+    this.w = 60;
     this.h = h;
   }
 
 
   draw() {
-    image(img2, this.x, this.y, this.w, this.h);
+    rect(this.x, this.y, this.w, this.h);
     this.x -= 5;
   }
 }
@@ -122,4 +122,5 @@ function keyPressed() {
     bird.goUp();
   }
 }
+
 
