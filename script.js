@@ -14,7 +14,7 @@ class Bird {
   }
 
   show() {
-    image(img, this.x, this.y, 100, 100);
+    image(img, this.x, this.y, 100, 100,);
   }
 
   goUp() {
@@ -113,12 +113,7 @@ function game() {
   background(bg)
   textSize(50);
   text(number, 300, 70, 70, 70);
-  //noStroke();
-  fill(0, 0, 0);
-  //ellipse(400, 220, 30);
-  //stroke('green');
-  //fill('white');
-  //strokeWeight(10);
+  fill (0, 0, 0)
   bird.update();
   bird.show();
   if (frameCount % 100 == 15 && frameCount >= 200) {
@@ -143,11 +138,8 @@ function game() {
   })
   //
 
-  if(this.x < 100 + 80 && this.x + 50 > 100){
-    if(this.y < 100 + 30 && this.y + 50 > 100){
-    }
-  }
 
+  
 }
 
 function gameOver() {
