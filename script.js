@@ -1,4 +1,5 @@
 var bird
+var gameState = 1; 
 let number = 0;
 let bg;
 let y = 0;
@@ -77,13 +78,50 @@ function setup() {
 
 
 function draw() {
+ text("gameState" + gameState, 25, 25);
+
+  if (gameState == 0) {
+    menu();
+  }
+
+  if (gameState == 1) {
+    game();
+  }
+
+  if (gameState == 2) {
+    gameOver();
+  }
+
+}
+
+function keyPressed() {
+  if (key === " ") {
+    bird.goUp();
+  }
+}
+
+
+function menu() {
+  background("#ababab");
+  text("MENU", 25, 45);
+  text("1. menu", 25, 65);
+  text("2. start game", 25, 85);
+  text("3. game over", 25, 105);
+}
+
+function game() {
   background(bg)
   textSize(50);
   text(number, 300, 70, 70, 70);
-  fill(115, 230, 0);
+  //noStroke();
+  fill(0, 0, 0);
+  //ellipse(400, 220, 30);
+  //stroke('green');
+  //fill('white');
+  //strokeWeight(10);
   bird.update();
   bird.show();
-  if (frameCount % 100 == 7 && frameCount >= 200) {
+  if (frameCount % 100 == 15 && frameCount >= 200) {
     number++;
   }
   if (frameCount % 100 == 0) {
@@ -112,10 +150,8 @@ function draw() {
 
 }
 
-function keyPressed() {
-  if (key === " ") {
-    bird.goUp();
-  }
+function gameOver() {
+  background("green");
+  text("GAME OVER", 25, 45);
+  x = 0;
 }
-
-
