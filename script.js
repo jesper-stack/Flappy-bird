@@ -58,10 +58,12 @@ class Pipe {
 
   checkCollision(){
     // if(x bots en y ook dan maken we de kleur rood. Of eigenlijk ztten we de gamestate op game over)    
-    if(bird.x > this.x){
-      gameState = 2;
+    if(bird.x > this.x && bird.x < this.x + this.w){
+      if (bird.y < this.h || bird.y > this.h) {
+        gamestate = 1;
+      }
     }
-
+  //gameState = 2;
   }
 }
 
@@ -155,4 +157,5 @@ function gameOver() {
   background("green");
   text("GAME OVER", 25, 45);
   x = 0;
+
 }
