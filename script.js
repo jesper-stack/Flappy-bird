@@ -55,6 +55,14 @@ class Pipe {
     rect(this.x, this.y, this.w, this.h);
     this.x -= 5;
   }
+
+  checkCollision(){
+    // if(x bots en y ook dan maken we de kleur rood. Of eigenlijk ztten we de gamestate op game over)    
+    if(bird.x > this.x){
+      gameState = 2;
+    }
+
+  }
 }
 
 
@@ -135,6 +143,7 @@ function game() {
 
   pipes.forEach((p) => {
     p.draw();
+    p.checkCollision();
   })
   //
 
