@@ -82,7 +82,7 @@ class Pipe {
 let img2;
 let img;
 function preload() {
-  img = loadImage("images/transparentv4.png");
+  img = loadImage("images/transparent (2).png");
   img2 = loadImage("images/pijp.png");
 }
 
