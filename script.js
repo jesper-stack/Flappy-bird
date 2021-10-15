@@ -3,6 +3,7 @@ var gameState = 1;
 let number = 0;
 let bg;
 let y = 0;
+let highscore = 0;
 
 class Bird {
   constructor() {
@@ -16,8 +17,8 @@ class Bird {
   }
 
   show() {    
-    rect(this.x, this.y, this.w, this.h);
-    image(img, this.x, this.y, this.w, this.h);
+    //rect(this.x, this.y, this.w, this.h);
+    image(img, this.x - 38, this.y - 39, this.w + 75, this.h + 75);
   }
 
   goUp() {
@@ -63,11 +64,11 @@ class Pipe {
   checkCollision(){
     // if(x bots en y ook dan maken we de kleur rood. Of eigenlijk ztten we de gamestate op game over)    
     if(bird.x > this.x && bird.x < this.x + this.w){
-      this.c = "orange";
+      //this.c = "orange";
       console.log(bird)
       if (bird.y < this.y + this.h && bird.y + bird.h > this.y) {
-        this.c = "red";
-       //gameState = 2;
+        //this.c = "red"
+       gameState = 2;
       }
     }
     else{
@@ -92,6 +93,7 @@ function setup() {
   canvas = createCanvas(600, 480);
   bg = loadImage("images/images.png");
   bird = new Bird();
+  highscore = 0;
 }
 
 
@@ -121,7 +123,7 @@ function keyPressed() {
 
 
 function menu() {
-  background("#ababab");
+  background ("blue")
   text("MENU", 25, 45);
   text("0. menu", 25, 65);
   text("1. start game", 25, 85);
@@ -129,10 +131,10 @@ function menu() {
 }
 
 function game() {
-  background(bg)
+  background(bg);
+  fill (0, 0, 0);
   textSize(50);
   text(number, 300, 70, 70, 70);
-  fill (0, 0, 0)
   bird.update();
   bird.show();
   if (frameCount % 100 == 15 && frameCount >= 200) {
@@ -158,8 +160,18 @@ function game() {
 }
 
 function gameOver() {
-  background("green");
+  background ("white");
   text("GAME OVER", 25, 45);
+  text("Score:" + number, 25 , 120);
+  text("Press Enter to play again.", 25, 280)
+  fill (0, 0, 0);
   x = 0;
+  if(keyIsDown(ENTER)) {
+    number = 0;
+    p = [];
+    pipes = []; 
+    frameCount = 0;
+    gameState = 1;
+  }
 
 }
