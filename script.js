@@ -8,14 +8,15 @@ class Bird {
   constructor() {
     this.y = height / 2;
     this.x = 64;
-    this.h = 100;
-    this.w = 100;
+    this.h = 25;
+    this.w = 25;
     this.gravity = 0.6;
     this.lift = -15;
     this.velocity = 0;
   }
 
-  show() {
+  show() {    
+    rect(this.x, this.y, this.w, this.h);
     image(img, this.x, this.y, this.w, this.h);
   }
 
@@ -66,13 +67,12 @@ class Pipe {
       console.log(bird)
       if (bird.y < this.y + this.h && bird.y + bird.h > this.y) {
         this.c = "red";
-        gameState = 2;
+       //gameState = 2;
       }
     }
     else{
       this.c = "green";
     }
-  //gameState = 2;
   }
 }
 
@@ -82,7 +82,7 @@ class Pipe {
 let img2;
 let img;
 function preload() {
-  img = loadImage("images/transparent.png");
+  img = loadImage("images/transparentv4.png");
   img2 = loadImage("images/pijp.png");
 }
 
@@ -123,9 +123,9 @@ function keyPressed() {
 function menu() {
   background("#ababab");
   text("MENU", 25, 45);
-  text("1. menu", 25, 65);
-  text("2. start game", 25, 85);
-  text("3. game over", 25, 105);
+  text("0. menu", 25, 65);
+  text("1. start game", 25, 85);
+  text("2. game over", 25, 105);
 }
 
 function game() {
