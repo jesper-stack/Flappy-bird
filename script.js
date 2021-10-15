@@ -1,5 +1,6 @@
 var bird
 var gameState = 0; 
+var audio = new Audio()
 let number = 0;
 let bg;
 let y = 0;
@@ -178,3 +179,10 @@ function gameOver() {
   }
 
 }
+
+
+function play(){
+  var audio = new Audio('Music: https://www.chosic.com/free-music/all/')
+  audio.play();
+};
+
