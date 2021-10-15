@@ -8,18 +8,19 @@ class Bird {
   constructor() {
     this.y = height / 2;
     this.x = 64;
+    this.h = 100;
+    this.w = 100;
     this.gravity = 0.6;
     this.lift = -15;
     this.velocity = 0;
   }
 
   show() {
-    image(img, this.x, this.y, 100, 100,);
+    image(img, this.x, this.y, this.w, this.h);
   }
 
   goUp() {
     this.velocity += this.lift;
-    console.log(this.velocity);
   }
 
   update() {
@@ -48,10 +49,12 @@ class Pipe {
     this.y = y;
     this.w = 60;
     this.h = h;
+    this.c = "green";
   }
 
 
   draw() {
+    fill(this.c);
     rect(this.x, this.y, this.w, this.h);
     this.x -= 5;
   }
@@ -59,9 +62,15 @@ class Pipe {
   checkCollision(){
     // if(x bots en y ook dan maken we de kleur rood. Of eigenlijk ztten we de gamestate op game over)    
     if(bird.x > this.x && bird.x < this.x + this.w){
-      if (bird.y < this.h || bird.y > this.h) {
-        gamestate = 1;
+      this.c = "orange";
+      console.log(bird)
+      if (bird.y < this.y + this.h && bird.y + bird.h > this.y) {
+        this.c = "red";
+        gameState = 2;
       }
+    }
+    else{
+      this.c = "green";
     }
   //gameState = 2;
   }
@@ -139,18 +148,13 @@ function game() {
     if(pipes.length > 8){
       pipes.splice(0,2);
     }
-
-    console.log(pipes);
   }
 
   pipes.forEach((p) => {
     p.draw();
     p.checkCollision();
   })
-  //
-
-
-  
+   
 }
 
 function gameOver() {
