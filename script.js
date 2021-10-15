@@ -1,5 +1,5 @@
 var bird
-var gameState = 1; 
+var gameState = 0; 
 let number = 0;
 let bg;
 let y = 0;
@@ -119,15 +119,18 @@ function keyPressed() {
   if (key === " ") {
     bird.goUp();
   }
+  
 }
 
 
 function menu() {
-  background ("blue")
-  text("MENU", 25, 45);
-  text("0. menu", 25, 65);
-  text("1. start game", 25, 85);
-  text("2. game over", 25, 105);
+  background ("lightblue")
+  if (keyIsDown(ENTER)) {
+    gameState = 1;
+  }
+  text("Welcome to Flappy Bird!", 25, 45);
+  text("Press Enter to start the game.", 25, 75)
+  text("Good luck!", 25, 105)
 }
 
 function game() {
