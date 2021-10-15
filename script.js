@@ -1,6 +1,5 @@
 var bird
 var gameState = 0; 
-var audio = new Audio()
 let number = 0;
 let bg;
 let y = 0;
@@ -86,6 +85,7 @@ let img;
 function preload() {
   img = loadImage("images/transparent (2).png");
   img2 = loadImage("images/pijp.png");
+  music = loadSound('Minstrel_Dance.mp3');
 }
 
 pipes = [];
@@ -128,6 +128,7 @@ function menu() {
   background ("lightblue")
   if (keyIsDown(ENTER)) {
     gameState = 1;
+    music.loop();
   }
   text("Welcome to Flappy Bird!", 25, 45);
   text("Press Enter to start the game.", 25, 75)
@@ -164,25 +165,27 @@ function game() {
 }
 
 function gameOver() {
+  if (number > highscore) {
+    highscore = number;
+  }
   background ("white");
   text("GAME OVER", 25, 45);
   text("Score:" + number, 25 , 120);
+  text("Highscore:" + highscore, 25 , 180);
   text("Press Enter to play again.", 25, 280)
   fill (0, 0, 0);
   x = 0;
+  music.stop();
   if(keyIsDown(ENTER)) {
     number = 0;
     p = [];
     pipes = []; 
     frameCount = 0;
     gameState = 1;
+    music.loop();
   }
 
 }
 
 
-function play(){
-  var audio = new Audio('Music: https://www.chosic.com/free-music/all/')
-  audio.play();
-};
 
